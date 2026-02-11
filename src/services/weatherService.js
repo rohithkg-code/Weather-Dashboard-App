@@ -1,5 +1,5 @@
 // OpenWeatherMap API service
-const API_KEY = 'edf64c6d8ef3e88a3657af4a12359f78';
+const API_KEY = 'INSERT API KEY';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
 /**
