@@ -1,5 +1,5 @@
 // OpenWeatherMap API service
-const API_KEY = '51b6df370ebe80d0acfb644201d8bc55';
+const API_KEY = 'edf64c6d8ef3e88a3657af4a12359f78';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
 /**
@@ -12,14 +12,14 @@ export const getCurrentWeather = async (city) => {
     const response = await fetch(
       `${BASE_URL}/weather?q=${city}&appid=${API_KEY}&units=metric`
     );
-    
+
     if (!response.ok) {
       if (response.status === 404) {
         throw new Error('City not found. Please check the spelling and try again.');
       }
       throw new Error('Failed to fetch weather data. Please try again later.');
     }
-    
+
     const data = await response.json();
     return data;
   } catch (error) {
@@ -37,22 +37,22 @@ export const getForecast = async (city) => {
     const response = await fetch(
       `${BASE_URL}/forecast?q=${city}&appid=${API_KEY}&units=metric`
     );
-    
+
     if (!response.ok) {
       if (response.status === 404) {
         throw new Error('City not found. Please check the spelling and try again.');
       }
       throw new Error('Failed to fetch forecast data. Please try again later.');
     }
-    
+
     const data = await response.json();
-    
+
     // Process forecast data to get daily highs/lows
     const dailyForecasts = {};
-    
+
     data.list.forEach((item) => {
       const date = new Date(item.dt * 1000).toLocaleDateString();
-      
+
       if (!dailyForecasts[date]) {
         dailyForecasts[date] = {
           date: item.dt,
@@ -65,7 +65,7 @@ export const getForecast = async (city) => {
         dailyForecasts[date].temps.push(item.main.temp);
       }
     });
-    
+
     // Convert to array and calculate min/max temps
     const forecastArray = Object.values(dailyForecasts).map((day) => ({
       date: day.date,
@@ -75,7 +75,7 @@ export const getForecast = async (city) => {
       description: day.description,
       icon: day.icon,
     }));
-    
+
     // Return first 5 days
     return forecastArray.slice(0, 5);
   } catch (error) {
