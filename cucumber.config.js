@@ -1,0 +1,7 @@
+export default {
+    default: {
+        require: ['tests/steps/**/*.js'],
+        format: ['progress', 'html:tests/reports/cucumber-report.html', 'json:tests/reports/cucumber-report.json'],
+        publishQuiet: true
+    }
+};
