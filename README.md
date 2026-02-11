@@ -2,6 +2,8 @@
 
 A modern, responsive weather dashboard built with React and Vite. Search for any city to view current weather conditions and a 5-day forecast.
 
+🌐 **Live Demo**: [https://hilarious-puffpuff-3a85d3.netlify.app/](https://hilarious-puffpuff-3a85d3.netlify.app/)
+
 ## Features
 
 - 🔍 **City Search** - Search weather by city name
